@@ -1,0 +1,5 @@
+# Dependencies for the standalone equation + validation modules only.
+# The base RL repo (Shuijing725/CrowdNav_Prediction_AttnGraph) has its own,
+# heavier install (torch, gym, the GST predictor) — follow ITS README for that.
+numpy>=1.23
+matplotlib>=3.6
