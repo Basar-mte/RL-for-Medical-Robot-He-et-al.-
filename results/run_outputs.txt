@@ -1,0 +1,47 @@
+Validation Run Outputs — He et al. (2025) Reproduction
+======================================================
+Date: 2026-06-14
+Python: C:\Users\Rocky\AppData\Local\Python\bin\python.exe (numpy 2.4.6, matplotlib 3.10.9)
+
+=== risk_field.py ===
+Scene-complexity C(sigma) for two pedestrians at [1,0] and [3,0], both v=1 m/s
+(robot at origin, no FoV limit)
+
+sigma= 0.5:  C = 0.1353
+sigma= 1.0:  C = 0.6121
+sigma= 3.0:  C = 1.2492
+sigma= 8.0:  C = 1.4583
+
+PASS: C increases monotonically with sigma (larger range factor captures more crowd)
+
+=== adaptive_reward.py ===
+Dense scene (4 nearby pedestrians, robot nearly surrounded):
+  dense : -42.8436  region=collision  C= 4.284
+
+Sparse scene (1 pedestrian far away):
+  sparse: 0.1       region=free       C= 0.411
+
+PASS: dense crowd -> large negative penalty; sparse -> mild positive potential reward
+
+=== metrics.py ===
+Toy demo over 3 fake episodes (2 success, 1 collision):
+  {'SR(%)': 66.7, 'NT(s)': 10.0, 'PL(m)': 5.14, 'ITR(%)': 20.0, 'SD': 0.16, 'N': 3}
+
+Metrics description:
+  SR   = Success Rate (%)          — higher is better
+  NT   = Navigation Time (s)       — lower is better  [success episodes only]
+  PL   = Path Length (m)           — lower is better  [success episodes only]
+  ITR  = Intrusion-to-Time Ratio   — lower is better
+  SD   = Social Distance (m)       — higher is better
+
+=== validate_figs.py ===
+Fig 2 — effective risk radius (C drops to 5% of peak), single pedestrian v=1 m/s:
+  sigma=0.5: ~ 1.22 m    [paper expects ~1.2 m]   PASS
+  sigma=1.0: ~ 2.44 m    [paper expects ~2.5 m]   PASS
+  sigma=3.0: ~ 7.33 m    [paper expects >6 m]     PASS
+
+Fig 3 — superposition peaks (sigma=1.0):
+  Low density  (2 pedestrians, well-separated): peak C = 0.5001  [paper expects ~0.50]  PASS
+  High density (2 pedestrians, d=1.16 m apart): peak C = 1.6900  [paper expects ~1.69]  PASS
+
+Output files: fig2_repro.png, fig3_repro.png
