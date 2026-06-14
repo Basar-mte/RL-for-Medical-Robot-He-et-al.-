@@ -1,0 +1,12 @@
+  density  n_humans  SR_proxy%   mean_r   mean_C  ITR_proxy%
+------------------------------------------------------------
+     0.07        10       40.0   -8.239    5.961        6.72
+     0.10        15       20.0  -18.985    8.169       11.42
+     0.14        20       20.0  -21.936   10.544       13.51
+     0.17        25       20.0  -29.322   13.448       14.89
+     0.21        30       10.0  -38.522   16.097       15.19
+
+Note: SR_proxy = fraction of straight-line trials reaching goal without collision.
+      ITR_proxy = fraction of steps inside personal-space zone (discomfort_dist=0.25m).
+      sigma=8.0, lambda=0.1 (paper training values)
+      This is reward-field simulation, not trained-policy evaluation.

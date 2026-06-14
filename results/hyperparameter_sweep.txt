@@ -1,0 +1,31 @@
+ sigma  lambda   r_confined     r_free  r_col_dense    C_dense
+--------------------------------------------------------------
+     2   0.005      -1.0191     0.1000     -94.6275     9.4627
+     2   0.050      -0.9875     0.1000     -94.6275     9.4627
+     2   0.100      -0.9536     0.1000     -94.6275     9.4627
+     2   0.200      -0.8891     0.1000     -94.6275     9.4627
+
+     6   0.005      -1.0762     0.1000    -121.5041    12.1504
+     6   0.050      -1.0428     0.1000    -121.5041    12.1504
+     6   0.100      -1.0069     0.1000    -121.5041    12.1504
+     6   0.200      -0.9389     0.1000    -121.5041    12.1504
+
+     8   0.005      -1.0794     0.1000    -123.1767    12.3177
+     8   0.050      -1.0459     0.1000    -123.1767    12.3177
+     8   0.100      -1.0099     0.1000    -123.1767    12.3177
+     8   0.200      -0.9417     0.1000    -123.1767    12.3177
+
+    10   0.005      -1.0809     0.1000    -123.9586    12.3959
+    10   0.050      -1.0473     0.1000    -123.9586    12.3959
+    10   0.100      -1.0113     0.1000    -123.9586    12.3959
+    10   0.200      -0.9430     0.1000    -123.9586    12.3959
+
+Paper headline results (from Sec 4.3):
+  Sweet spot : sigma=6,  lambda=0.1  -> SR ~94%
+  Too loose  : sigma=10, lambda=0.2  -> SR ~7%  (reward guidance fails)
+  Training   : sigma=8,  lambda=0.1
+
+Proxy interpretation:
+  r_confined: more negative = stronger penalty in danger zone (good deterrent)
+  r_free:     should be ~+0.1 (potential reward when closing 0.1 m to goal)
+  r_col_dense: more negative = stronger collision avoidance signal
